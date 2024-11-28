@@ -54,19 +54,26 @@ const sizes = {
 // Scene
 const scene = new THREE.Scene();
 
-// Object
-const mesh = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1, 5, 5, 5),
-  new THREE.MeshBasicMaterial({
-    color: 0xff0000,
-    wireframe: true,
-    side: THREE.DoubleSide,
-    wireframeLinewidth: 12,
-    wireframeLinejoin: "round",
-    wireframeLinecap: "round",
-  })
-);
+const geometry = new THREE.BoxGeometry(1, 1, 1, 3, 3, 3);
+const material = new THREE.MeshBasicMaterial({
+  color: 0xff0000,
+  wireframe: true,
+  // side: THREE.DoubleSide,
+  wireframeLinewidth: 1,
+  // wireframeLinejoin: "round",
+  // wireframeLinecap: "round",
+});
+
+// Mesh
+const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+
+// // Custom vertex shader
+// const positionArray = new Float32Array([
+//   0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
+// ]);
+// const positionAttribute = new THREE.BufferAttribute(positionArray, 3);
+// geometry.setAttribute("position", positionAttribute);
 
 // // Axes Helper
 const axesHelper = new THREE.AxesHelper();
